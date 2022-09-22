@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="FakeAtlas.Views.SearchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FakeAtlas.Views" 
+             xmlns:viewmodels="clr-namespace:FakeAtlas.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:SearchViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="ScrollBar" BasedOn="{StaticResource CustomScroll}">
+
+        </Style>
+    </UserControl.Resources>
+    <Border BorderBrush="#FF4F5A66" BorderThickness="1 1 0 0">
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="/FakeAtlas;component/Resources/roadWinterFULLHD.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="13"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="121*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="1" Grid.Column="1" Style="{DynamicResource LiteralButton}" Content="{DynamicResource m_From}" Foreground="AliceBlue"     HorizontalAlignment="Left"  FontSize="10" />
+            <Button Grid.Row="1" Grid.Column="3" Style="{DynamicResource LiteralButton}" Content="{DynamicResource m_To}"   Foreground="AliceBlue"     HorizontalAlignment="Left"  FontSize="10"  />
+            <Button Grid.Row="1" Grid.Column="5" Style="{DynamicResource LiteralButton}" Content="{DynamicResource m_When}" Foreground="AliceBlue"     HorizontalAlignment="Left"  FontSize="10"  />
+            <TextBox Text="{Binding SelectedOrder.PathFrom, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Style="{DynamicResource InputTextBox}"/>
+            <TextBlock IsHitTestVisible="False" FontSize="11" Text="Минск/Марьина Горка" Foreground="Aqua" Grid.Row="2" Grid.Column="1" ></TextBlock>
+            <TextBox Text="{Binding SelectedOrder.PathTo, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" Style="{DynamicResource InputTextBox}"/>
+            <TextBlock IsHitTestVisible="False" FontSize="11" Text="Минск/Марьина Горка" Foreground="Aqua" Grid.Row="2" Grid.Column="3" ></TextBlock>
+            <Button Command="{Binding FindCommand}" Grid.Row="5" Grid.Column="9" Style="{DynamicResource TiledButton}" Content="{DynamicResource m_Search}" FontSize="19"/>
+
+
+            <TextBlock IsHitTestVisible="False" FontSize="11" Text="Минск/Марьина Горка" Foreground="Aqua" Grid.Row="5" Grid.Column="1" ></TextBlock>
+            <TextBlock IsHitTestVisible="False" FontSize="11" Text="Минск/Витебск" Foreground="Aqua" Grid.Row="5" Grid.Column="5" ></TextBlock>
+            <TextBlock IsHitTestVisible="False" FontSize="11" Text="Минск/Руденск" Foreground="Aqua" Grid.Row="5" Grid.Column="3" ></TextBlock>
+            <TextBlock IsHitTestVisible="False" FontSize="11" Text="Минск/Новое Село" Foreground="Aqua" Grid.Row="5" Grid.Column="7" ></TextBlock>
+
+            <DatePicker SelectedDate="{Binding SelectedOrder.DepartureTime, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="5" Style="{DynamicResource DP}" Opacity="0.85"/>
+            <ScrollViewer Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="7" Opacity="0.99">
+                <ListBox ItemsSource="{Binding SelectedOrders, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderThickness="0"
+                         SelectedItem="{Binding SelectedOrder}" SelectionChanged="ListBox_SelectionChanged_1">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="Background" Value="#FFBBD1FF"/>
+                            <Setter Property="Foreground" Value="#FF14213C"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <Border x:Name="brd" Background="{TemplateBinding Background}" 
+                                          BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                                            <RadioButton Focusable="False" Margin="{TemplateBinding Padding}" Foreground="{TemplateBinding Foreground}"
+                                                          IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}">
+                                                <ContentPresenter/>
+                                            </RadioButton>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Background" Value="#FF8AB4FF"/>
+                                                <Setter Property="Foreground" Value="White"/>
+                                                <Setter Property="BorderThickness" Value="1"/>
+                                                <Setter Property="BorderBrush" Value="Black"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="3"/>
+                                    <ColumnDefinition Width="3"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="3"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="3"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="3"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <WrapPanel>
+                                    <WrapPanel.InputBindings>
+                                        <MouseBinding Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.SelectCommand}"  Gesture="LeftDoubleClick"/>
+                                    </WrapPanel.InputBindings>
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding PathFrom}">-</TextBlock>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PathTo}"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="3" Text="{DynamicResource m_OrderTime}"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="5" Text="{Binding OrderTime}"></TextBlock>
+                                    <TextBlock Grid.Row="0" Grid.Column="7" Text="{DynamicResource m_DepartureTime}"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="9" Text="{Binding DepartureTime}"></TextBlock>
+                                    <TextBlock Grid.Row="0" Grid.Column="11" Text="{DynamicResource m_Cost}"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="13" Text="{Binding Cost}"></TextBlock>
+                                </WrapPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</UserControl>

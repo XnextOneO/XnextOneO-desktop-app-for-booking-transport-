@@ -1,0 +1,51 @@
+﻿<Application x:Class="FakeAtlas.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:FakeAtlas.ViewModels"
+             xmlns:v="clr-namespace:FakeAtlas.Views"
+             StartupUri="Views/LoginWindow.xaml">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type vm:SignInViewModel}">
+                <v:SignInPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:SignUpViewModel}">
+                <v:SignUpPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:AdminViewModel}">
+                <v:AdminPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:BookingUserViewModel}">
+                <v:InfoPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:OrdersViewModel}">
+                <v:OrdersPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:SearchViewModel}">
+                <v:SearchView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:HelpViewModel}">
+                <v:HelpPage/>
+            </DataTemplate>
+
+            <ResourceDictionary.MergedDictionaries>
+                
+                <ResourceDictionary Source="Localization/lang.ru-RU.xaml" />
+                <ResourceDictionary Source="Styles/Colors.xaml" />
+                <ResourceDictionary Source="Styles/Textboxes.xaml" />
+                <ResourceDictionary Source="Styles/Buttons.xaml" />
+                <ResourceDictionary Source="Styles/ToolBars.xaml" />
+                
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

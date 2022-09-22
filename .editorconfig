@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# VSTHRD012: Указывайте JoinableTaskFactory, где это возможно
+dotnet_diagnostic.VSTHRD012.severity = none

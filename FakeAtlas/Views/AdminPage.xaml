@@ -1,0 +1,184 @@
+﻿<UserControl x:Class="FakeAtlas.Views.AdminPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FakeAtlas.Views"
+             xmlns:viewmodels="clr-namespace:FakeAtlas.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:AdminViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="ScrollBar" BasedOn="{StaticResource CustomScroll}">
+
+        </Style>
+        <Style x:Key="GridViewColumnHeaderStyle1" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                        <Border BorderThickness="0" Background="Transparent">
+                            <TextBlock x:Name="ContentHeader" Text="{TemplateBinding Content}" Padding="5 5 0 0" Width="{TemplateBinding Width}" TextAlignment="Left" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="35"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Button  Grid.Column="1" Foreground="#FF0B0A22" Grid.Row="12" Style="{DynamicResource LiteralButton}" HorizontalAlignment="Left" Content="{DynamicResource m_AddCompany}" FontSize="15" Grid.ColumnSpan="2" FontWeight="DemiBold"  Background="#FF070617"/>
+        <Button  Grid.Column="1" Foreground="#FF0B0A22" Grid.Row="1"  Style="{DynamicResource LiteralButton}" HorizontalAlignment="Left" Content="{DynamicResource m_AddRoute}" FontSize="15" Grid.ColumnSpan="2"   FontWeight="DemiBold" Background="#FF070617"/>
+        <Button  Grid.Column="1" Foreground="#FF0B0A22" Grid.Row="13" Style="{DynamicResource LiteralButton}" HorizontalAlignment="Left" Content="{DynamicResource m_CompanyName}" Background="#FF070617"/>
+        <Button  Grid.Column="1" Foreground="#FF0B0A22" Grid.Row="15" Style="{DynamicResource LiteralButton}" HorizontalAlignment="Left" Content="{DynamicResource m_VehicleType}"/>
+        <Button  Grid.Column="1" Foreground="#FF0B0A22" Grid.Row="17" Style="{DynamicResource LiteralButton}" HorizontalAlignment="Left" Content="{DynamicResource m_VehicleNum}"/>
+        <Button  Grid.Column="1" Foreground="#FF0B0A22" Grid.Row="2"  Style="{DynamicResource LiteralButton}" HorizontalAlignment="Left" Content="{DynamicResource m_From}"/>
+        <Button  Grid.Column="1" Foreground="#FF0B0A22" Grid.Row="4"  Style="{DynamicResource LiteralButton}" HorizontalAlignment="Left" Content="{DynamicResource m_To}" Background="#FF2A2649"/>
+        <Button  Grid.Column="1" Foreground="#FF0B0A22" Grid.Row="6"  Style="{DynamicResource LiteralButton}" HorizontalAlignment="Left" Content="{DynamicResource m_When}" Background="#FF2A2649"/>
+        <Button  Grid.Column="1" Foreground="#FF0B0A22" Grid.Row="8"  Style="{DynamicResource LiteralButton}" HorizontalAlignment="Left" Content="{DynamicResource m_CostInfo}" Background="#FF2A2649"/>
+        <Button  Grid.Column="1" Foreground="#FF0B0A22" Grid.Row="10" Style="{DynamicResource LiteralButton}" HorizontalAlignment="Left" Content="{DynamicResource m_CompanyName}" Background="#FF2A2649"/>
+            <TextBox Style="{DynamicResource InputTextBox}" Grid.ColumnSpan="2" Grid.Column="2"  Grid.Row="13" Text="{Binding SelectedShipperCreating.FullName, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Style="{DynamicResource InputTextBox}" Grid.ColumnSpan="2" Grid.Column="2"  Grid.Row="15" Text="{Binding SelectedShipperCreating.VehicleType, UpdateSourceTrigger=PropertyChanged}"  />
+            <TextBox Style="{DynamicResource InputTextBox}" Grid.ColumnSpan="2" Grid.Column="2"  Grid.Row="17" Text="{Binding SelectedShipperCreating.VehicleNum, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock IsHitTestVisible="False" FontSize="11" Text="С больш. буквы" Foreground="DarkBlue" Grid.Row="2" Grid.Column="5" ></TextBlock>
+            <TextBlock IsHitTestVisible="False" FontSize="11" Text="С больш. буквы" Foreground="DarkBlue" Grid.Row="4" Grid.Column="5" ></TextBlock>
+            <TextBlock IsHitTestVisible="False" FontSize="11" Text="m-d-y 0:00:00" Foreground="DarkBlue" Grid.Row="6" Grid.Column="5" ></TextBlock>
+            
+            <TextBox Style="{DynamicResource InputTextBox}" Grid.ColumnSpan="2" Grid.Column="2"  Grid.Row="2" Text="{Binding SelectedOrderCreating.PathFrom, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Style="{DynamicResource InputTextBox}" Grid.ColumnSpan="2" Grid.Column="2"  Grid.Row="4" Text="{Binding SelectedOrderCreating.PathTo, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Style="{DynamicResource InputTextBox}" Grid.ColumnSpan="2" Grid.Column="2"  Grid.Row="6" Text="{Binding SelectedOrderCreating.DepartureTime, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Style="{DynamicResource InputTextBox}" Grid.ColumnSpan="2" Grid.Column="2"  Grid.Row="8" Text="{Binding SelectedOrderCreating.Cost, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox IsReadOnly="True" Style="{DynamicResource InputTextBox}" Grid.ColumnSpan="2" Grid.Column="2"  Grid.Row="10" Text="{Binding CompanyName, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button  Style="{DynamicResource InputButton}" Command="{Binding SaveCompanyCommand}" FontWeight="UltraBlack" Grid.Column="5" Grid.Row="17" Content="{DynamicResource m_Save}" FontSize="13"/>
+        <Button  Style="{DynamicResource InputButton}" Command="{Binding SaveRouteCommand}" FontWeight="UltraBlack" Grid.Column="5" Grid.Row="10" Content="{DynamicResource m_Save}" FontSize="13"/>
+
+
+        <ScrollViewer Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="5" Grid.RowSpan="10">
+            <ListView Background="Transparent"
+    ItemsSource="{Binding Path=SelectedOrders, UpdateSourceTrigger=PropertyChanged}" 
+                      SelectedItem="{Binding SelectedOrder}">
+                <ListView.View>
+                    <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle1}">
+                        <GridViewColumn DisplayMemberBinding="{Binding PathFrom}" 
+                  Header="{DynamicResource m_From}" Width="100"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding PathTo}" 
+                  Header="{DynamicResource m_To}" Width="100"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding DepartureTime}" 
+                  Header="{DynamicResource m_When}" Width="auto"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Cost}" 
+                  Header="{DynamicResource m_CostInfo}" Width="100"/>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{DynamicResource CloseRedButton}" 
+                                            Command="{Binding Path=DataContext.RemoveOrderCommand, RelativeSource={RelativeSource AncestorType=ListView, 
+                                               Mode=FindAncestor}}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+
+                <ListView Background="Transparent" Grid.Row="13" Grid.Column="7" Grid.ColumnSpan="5" Grid.RowSpan="5"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+    ItemsSource="{Binding Path=SelectedShippers, UpdateSourceTrigger=PropertyChanged}" 
+                      SelectedItem="{Binding SelectedShipper}">
+                    <ListView.View>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle1}">
+                            <GridViewColumn DisplayMemberBinding="{Binding FullName}" 
+                  Header="{DynamicResource m_CompanyName}" Width="100"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding VehicleType}" 
+                  Header="{DynamicResource m_VehicleType}" Width="100"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding VehicleNum}" 
+                  Header="{DynamicResource m_VehicleNum}" Width="100"/>
+                            <GridViewColumn>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Style="{DynamicResource CloseRedButton}" 
+                                            Command="{Binding Path=DataContext.RemoveCompanyCommand, RelativeSource={RelativeSource AncestorType=ListView, 
+                                               Mode=FindAncestor}}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+
+                    </ListView.View>
+                </ListView>
+                <ListView Grid.Row="20" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="6" 
+                          Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                          ScrollViewer.VerticalScrollBarVisibility="Visible"
+    ItemsSource="{Binding Path=SelectedUsers, UpdateSourceTrigger=PropertyChanged}" 
+                      SelectedItem="{Binding SelectedUser}">
+                <ListView.View>
+                    <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle1}">
+                        <GridViewColumn DisplayMemberBinding="{Binding FullName}" 
+                  Header="{DynamicResource m_Name}" Width="auto"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding UserLogin}" 
+                  Header="{DynamicResource m_Login}" Width="auto"/>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{DynamicResource CloseRedButton}" 
+                                            Command="{Binding Path=DataContext.RemoveUserCommand, RelativeSource={RelativeSource AncestorType=ListView, 
+                                               Mode=FindAncestor}}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
