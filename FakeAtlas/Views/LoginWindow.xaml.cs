@@ -34,10 +34,10 @@ namespace FakeAtlas.Views
                 return;
             }
 
-            MailAddress fromadress = new MailAddress("xnextone@gmail.com", "FAKEATLAS");
+            MailAddress fromadress = new MailAddress("mail", "FAKEATLAS");
             MailAddress toadress = new MailAddress(email.Text);
             MailMessage message = new MailMessage(fromadress, toadress);
-            message.Body = "Ваш временный аккаунт Login: Temporyaccaunt123 Password: 123321asd";
+            message.Body = "Ваш временный аккаунт Login: ... Password: ...";
             message.Subject = "привет";
 
             SmtpClient smptpClient = new SmtpClient();
@@ -46,7 +46,7 @@ namespace FakeAtlas.Views
             smptpClient.EnableSsl = true;
             smptpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             smptpClient.UseDefaultCredentials = false;
-            smptpClient.Credentials = new NetworkCredential(fromadress.Address, "123321ZXCqweasd/");
+            smptpClient.Credentials = new NetworkCredential(fromadress.Address, "...");
 
 
             smptpClient.Send(message);
